@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      MY_INTEGER_ENV: 42
+
     steps:
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -21,7 +24,17 @@ jobs:
           source venv/bin/activate
           pip install -r requirements.txt
 
+      - name: Set Environment Variable
+        run: echo "MY_INTEGER_ENV=${{ env.MY_INTEGER_ENV }}" >> $GITHUB_ENV
+
       - name: Run tests
         run: |
           source venv/bin/activate
           python -m unittest discover
+
+      - name: Run Python Script
+        run: |
+          source venv/bin/activate
+          python main.py
+        env:
+          MY_INTEGER_ENV: ${{ env.MY_INTEGER_ENV }}
