@@ -7,7 +7,6 @@ This project demonstrates setting up a basic CI/CD pipeline using GitHub Actions
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/Crowangg/Task1.git
-    ```bash
 
 2. **Navigate to the project directory:**
     ```bash
